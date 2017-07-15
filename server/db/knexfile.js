@@ -5,13 +5,19 @@ module.exports = {
       host: '127.0.0.1',
       user: 'root',
       password: '',
-      database: 'grow',
+      database: 'growth',
     },
     migrations: {
       directory: `${__dirname}/migrations`,
     },
     seeds: {
       directory: `${__dirname}/seeds`,
+    },
+  },
+  production: {
+
+    migrations: {
+      directory: `${__dirname}/migrations`,
     },
   },
 };

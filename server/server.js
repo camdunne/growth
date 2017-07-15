@@ -1,25 +1,24 @@
 const express = require('express');
-const { resolve, join } = require('path');
-const { config } = require('dotenv');
 const passport = require('passport');
+const { join, resolve } = require('path');
+const { isLoggedIn } = require('./controllers/user');
+require('dotenv').config();
 
-config();
+const port = process.env.PORT || 8080;
 const app = express();
 const router = express.Router();
 
 require('./config/middleware')(app, passport, router);
-require('./config/routes')(router);
 require('./config/passport')(passport);
+require('./config/routes')(app, passport, router);
 
 app.use(express.static(join(`${__dirname}/../build`)));
 app.use(express.static(join(`${__dirname}/../public`)));
 
-app.get('/*', (request, response) => {
-  response.sendFile(resolve(`${__dirname}/../public`, 'index.html'));
+app.get('/*', isLoggedIn, (request, response) => {
+  response.sendFile(resolve(`${__dirname}/../public/index.html`));
 });
 
-const server = app.listen(process.env.PORT || 3000, () => {
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log('Listening at http://%s:%s', host, port);
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}`);
 });

@@ -34,7 +34,6 @@ npm install
 #### .env file
 Add a .env file to your root directory with the following:
 ```sh
-PORT=3000
 NODE_ENV=development
 ```
 
@@ -43,6 +42,16 @@ NODE_ENV=development
 Open local database connection:
 ```sh
 mysql.server start
+```
+Go into mysql database:
+```sh
+mysql -u root -p
+```
+When it says 'Enter password: ', hit enter.
+Inside the mysql terminal add the database:
+```sh
+CREATE DATABASE growth;
+exit;
 ```
 From within the server/db directory, run the knex migrations to get the MySQL tables:
 ```sh

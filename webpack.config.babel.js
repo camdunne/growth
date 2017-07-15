@@ -1,9 +1,15 @@
 import { resolve, join } from 'path';
 
 module.exports = () => ({
+// <<<<<<< HEAD
   entry: './client/client.jsx',
   output: {
     path: resolve('public/build'),
+// =======
+//   entry: resolve(__dirname, './client/client.jsx'),
+//   output: {
+//     path: resolve(__dirname, './public/build'),
+// >>>>>>> refactor(auth): ejs login/signup pages
     filename: 'bundle.js',
     publicPath: '/public/build/',
     pathinfo: true,

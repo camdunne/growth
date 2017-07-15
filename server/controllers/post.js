@@ -1,6 +1,6 @@
 const User = require('../models/user');
 const Post = require('../models/post');
-const { camelCase } = require('../utils/ctrlHelper');
+const camelCase = require('../utils/post');
 
 
 module.exports = {
@@ -18,10 +18,10 @@ module.exports = {
 
   getPosts(req, res) {
     Post.fetchAll()
-  .then((results) => {
-    const resultsJSON = camelCase(results.toJSON()).sort((a, b) => b.id - a.id);
-    res.send({ posts: resultsJSON });
-  });
+    .then((results) => {
+      const resultsJSON = camelCase(results.toJSON()).sort((a, b) => b.id - a.id);
+      res.send({ posts: resultsJSON });
+    });
   },
 
   viewPost(req, res) {

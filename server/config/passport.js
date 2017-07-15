@@ -26,7 +26,7 @@ module.exports = (passport) => {
       .fetch()
       .then((user) => {
         if (user) {
-          return done(null, false, { message: 'email already exists' });
+          return done(null, false, req.flash('signupMessage', 'email Already Exists'));
         }
         const hashedPassword = hashSync(password, genSaltSync(8), null);
         new User({ email })
@@ -57,11 +57,11 @@ module.exports = (passport) => {
       .fetch()
       .then((local) => {
         if (!local) {
-          return done(null, false, { message: 'No user found.' });
+          return done(null, false, req.flash('loginMessage', 'Wrong email or Password'));
         }
         const localJSON = local.toJSON();
         if (!compareSync(password, localJSON.password)) {
-          return done(null, false, { message: 'Incorrect password.' });
+          return done(null, false, req.flash('loginMessage', 'Wrong email or Password'));
         }
         const userId = localJSON.user_id;
         new User({ id: userId })
