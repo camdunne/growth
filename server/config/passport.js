@@ -16,7 +16,7 @@ module.exports = (passport) => {
       .catch((err) => { done(err); });
   });
   passport.use('local-signup', new LocalStrategy({
-    usernameField: 'email',
+    emailField: 'email',
     passwordField: 'password',
     passReqToCallback: true,
   },
@@ -48,7 +48,7 @@ module.exports = (passport) => {
     });
   }));
   passport.use('local-login', new LocalStrategy({
-    usernameField: 'email',
+    emailField: 'email',
     passwordField: 'password',
     passReqToCallback: true,
   },
