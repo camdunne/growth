@@ -14,10 +14,4 @@ module.exports = {
       directory: `${__dirname}/seeds`,
     },
   },
-  production: {
-
-    migrations: {
-      directory: `${__dirname}/migrations`,
-    },
-  },
 };
