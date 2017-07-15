@@ -18,11 +18,7 @@ class Splash extends Component {
         <br />
         <Link to="/allposts">{'all postings'}</Link>
         <div>{'Hello user: '}{this.props.email}</div>
-<<<<<<< HEAD
-        <a href="/api/users/logout">{'log out'}</a>
-=======
         <a href="/logout">{'log out'}</a>
->>>>>>> mergeejs
       </div>
     );
   }
